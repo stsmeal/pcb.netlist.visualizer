@@ -1,0 +1,7 @@
+{{- define "pcb-netlist-visualizer-client.fullname" -}}
+{{- printf "%s-%s" .Release.Name .Chart.Name | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+{{- define "pcb-netlist-visualizer-client.name" -}}
+{{- .Chart.Name -}}
+{{- end -}}

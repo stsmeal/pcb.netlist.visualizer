@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: pcb-netlist-visualizer-client
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  className: "client"
+  hosts:
+    - host: dev.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: local-tls
+      hosts:
+        - "*.dev.local"
+        - "dev.local"

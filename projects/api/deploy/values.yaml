@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: pcb-netlist-visualizer-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Environment configuration
+env:
+  NODE_ENV: production
+  DB_CONNECTION_STRING: mongo-db-mongodb.default.svc.cluster.local:27017
+  DB_NAME: database # Name of the database
+  PORT: '3000'
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  className: 'api'
+  hosts:
+    - host: api.dev.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: local-tls
+      hosts:
+        - '*.dev.local'
+        - 'dev.local'

@@ -1,0 +1,39 @@
+{
+  "components": [
+    {
+      "name": "IC1",
+      "type": "Microcontroller",
+      "pins": ["VCC", "GND", "OUT1"]
+    },
+    {
+      "name": "R1",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "LED1",
+      "type": "LED",
+      "pins": ["ANODE", "CATHODE"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "IC1", "pin": "VCC" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "IC1", "pin": "GND" }
+      ]
+    },
+    {
+      "net": "SINGLE_CONNECTION",
+      "connections": [
+        { "component": "R1", "pin": "1" }
+      ]
+    }
+  ]
+}

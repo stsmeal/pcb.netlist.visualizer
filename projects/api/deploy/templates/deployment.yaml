@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "pcb-netlist-visualizer-api.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "pcb-netlist-visualizer-api.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "pcb-netlist-visualizer-api.name" . }}
+    spec:
+      containers:
+        - name: pcb-netlist-visualizer-api
+          image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+          imagePullPolicy:
+            {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NODE_ENV
+              value: '{{ .Values.env.NODE_ENV }}'
+            - name: DB_CONNECTION_STRING
+              value: '{{ .Values.env.DB_CONNECTION_STRING }}'
+            - name: DB_NAME
+              value: '{{ .Values.env.DB_NAME }}'
+            - name: PORT
+              value: '{{ .Values.env.PORT }}'

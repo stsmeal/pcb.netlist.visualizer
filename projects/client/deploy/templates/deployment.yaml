@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "pcb-netlist-visualizer-client.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "pcb-netlist-visualizer-client.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "pcb-netlist-visualizer-client.name" . }}
+    spec:
+      containers:
+        - name: pcb-netlist-visualizer-client
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+          ports:
+            - containerPort: 3000

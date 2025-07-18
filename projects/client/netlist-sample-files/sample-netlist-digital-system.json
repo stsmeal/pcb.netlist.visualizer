@@ -1,0 +1,136 @@
+{
+  "components": [
+    {
+      "name": "OSC1",
+      "type": "Crystal_Oscillator",
+      "pins": ["VCC", "GND", "OUT", "EN"]
+    },
+    {
+      "name": "CPU1",
+      "type": "Processor",
+      "pins": ["VCC", "GND", "CLK_IN", "CLK_OUT", "DATA0", "DATA1", "DATA2", "DATA3"]
+    },
+    {
+      "name": "BUFF1",
+      "type": "Clock_Buffer",
+      "pins": ["VCC", "GND", "CLK_IN", "CLK_OUT1", "CLK_OUT2", "CLK_OUT3"]
+    },
+    {
+      "name": "MEM1",
+      "type": "Memory",
+      "pins": ["VCC", "GND", "CLK", "DATA0", "DATA1", "DATA2", "DATA3"]
+    },
+    {
+      "name": "FPGA1",
+      "type": "FPGA",
+      "pins": ["VCC", "GND", "CLK", "DATA0", "DATA1"]
+    },
+    {
+      "name": "C1",
+      "type": "Capacitor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "C2",
+      "type": "Capacitor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "R1",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "OSC1", "pin": "VCC" },
+        { "component": "CPU1", "pin": "VCC" },
+        { "component": "BUFF1", "pin": "VCC" },
+        { "component": "MEM1", "pin": "VCC" },
+        { "component": "FPGA1", "pin": "VCC" },
+        { "component": "C1", "pin": "1" },
+        { "component": "C2", "pin": "1" },
+        { "component": "R1", "pin": "1" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "OSC1", "pin": "GND" },
+        { "component": "CPU1", "pin": "GND" },
+        { "component": "BUFF1", "pin": "GND" },
+        { "component": "MEM1", "pin": "GND" },
+        { "component": "FPGA1", "pin": "GND" },
+        { "component": "C1", "pin": "2" },
+        { "component": "C2", "pin": "2" }
+      ]
+    },
+    {
+      "net": "MASTER_CLK",
+      "connections": [
+        { "component": "OSC1", "pin": "OUT" },
+        { "component": "CPU1", "pin": "CLK_IN" }
+      ]
+    },
+    {
+      "net": "CPU_CLK_OUT",
+      "connections": [
+        { "component": "CPU1", "pin": "CLK_OUT" },
+        { "component": "BUFF1", "pin": "CLK_IN" }
+      ]
+    },
+    {
+      "net": "CLK_MEM",
+      "connections": [
+        { "component": "BUFF1", "pin": "CLK_OUT1" },
+        { "component": "MEM1", "pin": "CLK" }
+      ]
+    },
+    {
+      "net": "CLK_FPGA",
+      "connections": [
+        { "component": "BUFF1", "pin": "CLK_OUT2" },
+        { "component": "FPGA1", "pin": "CLK" }
+      ]
+    },
+    {
+      "net": "DATA_BUS_0",
+      "connections": [
+        { "component": "CPU1", "pin": "DATA0" },
+        { "component": "MEM1", "pin": "DATA0" },
+        { "component": "FPGA1", "pin": "DATA0" }
+      ]
+    },
+    {
+      "net": "DATA_BUS_1",
+      "connections": [
+        { "component": "CPU1", "pin": "DATA1" },
+        { "component": "MEM1", "pin": "DATA1" },
+        { "component": "FPGA1", "pin": "DATA1" }
+      ]
+    },
+    {
+      "net": "DATA_BUS_2",
+      "connections": [
+        { "component": "CPU1", "pin": "DATA2" },
+        { "component": "MEM1", "pin": "DATA2" }
+      ]
+    },
+    {
+      "net": "DATA_BUS_3",
+      "connections": [
+        { "component": "CPU1", "pin": "DATA3" },
+        { "component": "MEM1", "pin": "DATA3" }
+      ]
+    },
+    {
+      "net": "OSC_ENABLE",
+      "connections": [
+        { "component": "OSC1", "pin": "EN" },
+        { "component": "R1", "pin": "2" }
+      ]
+    }
+  ]
+}

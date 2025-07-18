@@ -1,0 +1,34 @@
+{
+  "components": [
+    {
+      "name": "",
+      "type": "IC",
+      "pins": ["VCC", "GND", "OUT"]
+    },
+    {
+      "name": "R1",
+      "type": "",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "C1",
+      "type": "Capacitor",
+      "pins": []
+    }
+  ],
+  "nets": [
+    {
+      "net": "",
+      "connections": [
+        { "component": "R1", "pin": "1" }
+      ]
+    },
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "UNKNOWN_COMP", "pin": "VCC" },
+        { "component": "R1", "pin": "INVALID_PIN" }
+      ]
+    }
+  ]
+}

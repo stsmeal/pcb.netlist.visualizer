@@ -1,0 +1,66 @@
+{
+  "components": [
+    {
+      "name": "MY_IC",
+      "type": "IC",
+      "pins": ["PWR", "IO1", "GND"]
+    },
+    {
+      "name": "MY_COMP_01",
+      "type": "Module",
+      "pins": ["PWR", "SENS1", "SENS2", "GND"]
+    },
+    {
+      "name": "MY_COMP_02",
+      "type": "Module",
+      "pins": ["PWR", "IN", "GND"]
+    },
+    {
+      "name": "MY_CONNECTOR",
+      "type": "Connector",
+      "pins": ["PWR", "IO", "SENS1", "SENS2", "PWM"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "PWR",
+      "connections": [
+        { "component": "MY_IC", "pin": "PWR" },
+        { "component": "MY_COMP_01", "pin": "PWR" },
+        { "component": "MY_COMP_02", "pin": "PWR" },
+        { "component": "MY_CONNECTOR", "pin": "PWR" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "MY_IC", "pin": "GND" },
+        { "component": "MY_COMP_01", "pin": "GND" },
+        { "component": "MY_COMP_02", "pin": "GND" }
+      ]
+    },
+    {
+      "net": "IO_LINE",
+      "connections": [
+        { "component": "MY_IC", "pin": "IO1" },
+        { "component": "MY_CONNECTOR", "pin": "IO" }
+      ]
+    },
+    {
+      "net": "SENS_LINE",
+      "connections": [
+        { "component": "MY_COMP_01", "pin": "SENS1" },
+        { "component": "MY_CONNECTOR", "pin": "SENS1" }
+      ]
+    },
+    {
+      "net": "PWM_LINE",
+      "connections": [
+        { "component": "MY_COMP_01", "pin": "SENS2" },
+        { "component": "MY_CONNECTOR", "pin": "SENS2" },
+        { "component": "MY_CONNECTOR", "pin": "PWM" },
+        { "component": "MY_COMP_02", "pin": "IN" }
+      ]
+    }
+  ]
+}

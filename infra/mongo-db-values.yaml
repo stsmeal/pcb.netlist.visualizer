@@ -1,0 +1,30 @@
+architecture: standalone
+
+auth:
+  enabled: false
+
+persistence:
+  enabled: true
+  size: 1Gi
+  storageClass: ""
+
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 75m
+  limits:
+    memory: 200Mi
+    cpu: 150m
+
+service:
+  type: ClusterIP
+  port: 27017
+
+metrics:
+  enabled: false
+
+livenessProbe:
+  enabled: false
+
+readinessProbe:
+  enabled: false

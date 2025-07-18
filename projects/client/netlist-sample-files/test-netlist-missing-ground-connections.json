@@ -1,0 +1,63 @@
+{
+  "components": [
+    {
+      "name": "IC1",
+      "type": "Microcontroller",
+      "pins": ["VCC", "GND", "OUT1", "OUT2"]
+    },
+    {
+      "name": "R1",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "R2",
+      "type": "Resistor", 
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "LED1",
+      "type": "LED",
+      "pins": ["ANODE", "CATHODE"]
+    },
+    {
+      "name": "CONN1",
+      "type": "Connector",
+      "pins": ["VCC_IN", "GND_IN", "SIG_OUT"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "IC1", "pin": "VCC" },
+        { "component": "R1", "pin": "1" },
+        { "component": "CONN1", "pin": "VCC_IN" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "IC1", "pin": "GND" },
+        { "component": "LED1", "pin": "CATHODE" },
+        { "component": "CONN1", "pin": "GND_IN" }
+      ]
+    },
+    {
+      "net": "LED_CONTROL",
+      "connections": [
+        { "component": "IC1", "pin": "OUT1" },
+        { "component": "R1", "pin": "2" },
+        { "component": "LED1", "pin": "ANODE" }
+      ]
+    },
+    {
+      "net": "OUTPUT_SIGNAL",
+      "connections": [
+        { "component": "IC1", "pin": "OUT2" },
+        { "component": "R2", "pin": "1" },
+        { "component": "CONN1", "pin": "SIG_OUT" }
+      ]
+    }
+  ]
+}

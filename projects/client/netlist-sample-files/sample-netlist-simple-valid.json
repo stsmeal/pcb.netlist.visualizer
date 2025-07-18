@@ -1,0 +1,64 @@
+{
+  "components": [
+    {
+      "name": "U1",
+      "type": "Microcontroller",
+      "pins": ["VCC", "GND", "TX", "RX", "GPIO1", "GPIO2"]
+    },
+    {
+      "name": "R1",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "LED1",
+      "type": "LED",
+      "pins": ["ANODE", "CATHODE"]
+    },
+    {
+      "name": "CONN1",
+      "type": "Connector",
+      "pins": ["VCC", "GND", "TX", "RX"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "U1", "pin": "VCC" },
+        { "component": "R1", "pin": "1" },
+        { "component": "CONN1", "pin": "VCC" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "U1", "pin": "GND" },
+        { "component": "LED1", "pin": "CATHODE" },
+        { "component": "CONN1", "pin": "GND" }
+      ]
+    },
+    {
+      "net": "LED_CONTROL",
+      "connections": [
+        { "component": "U1", "pin": "GPIO1" },
+        { "component": "R1", "pin": "2" },
+        { "component": "LED1", "pin": "ANODE" }
+      ]
+    },
+    {
+      "net": "UART_TX",
+      "connections": [
+        { "component": "U1", "pin": "TX" },
+        { "component": "CONN1", "pin": "TX" }
+      ]
+    },
+    {
+      "net": "UART_RX",
+      "connections": [
+        { "component": "U1", "pin": "RX" },
+        { "component": "CONN1", "pin": "RX" }
+      ]
+    }
+  ]
+}

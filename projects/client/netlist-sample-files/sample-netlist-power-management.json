@@ -1,0 +1,116 @@
+{
+  "components": [
+    {
+      "name": "MCU1",
+      "type": "Microcontroller",
+      "pins": ["VCC", "GND", "MOSI", "MISO", "SCK", "CS", "EN", "RST"]
+    },
+    {
+      "name": "FLASH1",
+      "type": "Flash_Memory",
+      "pins": ["VCC", "GND", "DI", "DO", "CLK", "CS"]
+    },
+    {
+      "name": "REG1",
+      "type": "Voltage_Regulator",
+      "pins": ["VIN", "VOUT", "GND", "EN"]
+    },
+    {
+      "name": "C_IN",
+      "type": "Capacitor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "C_OUT",
+      "type": "Capacitor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "R_PULLUP",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "PWR_CONN",
+      "type": "Connector",
+      "pins": ["VIN", "GND"]
+    },
+    {
+      "name": "SPI_CONN",
+      "type": "Connector",
+      "pins": ["MOSI", "MISO", "SCK", "CS", "GND"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VIN_RAW",
+      "connections": [
+        { "component": "PWR_CONN", "pin": "VIN" },
+        { "component": "REG1", "pin": "VIN" },
+        { "component": "C_IN", "pin": "1" }
+      ]
+    },
+    {
+      "net": "VCC_3V3",
+      "connections": [
+        { "component": "REG1", "pin": "VOUT" },
+        { "component": "MCU1", "pin": "VCC" },
+        { "component": "FLASH1", "pin": "VCC" },
+        { "component": "C_OUT", "pin": "1" },
+        { "component": "R_PULLUP", "pin": "1" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "PWR_CONN", "pin": "GND" },
+        { "component": "REG1", "pin": "GND" },
+        { "component": "MCU1", "pin": "GND" },
+        { "component": "FLASH1", "pin": "GND" },
+        { "component": "C_IN", "pin": "2" },
+        { "component": "C_OUT", "pin": "2" },
+        { "component": "SPI_CONN", "pin": "GND" }
+      ]
+    },
+    {
+      "net": "SPI_MOSI",
+      "connections": [
+        { "component": "MCU1", "pin": "MOSI" },
+        { "component": "FLASH1", "pin": "DI" },
+        { "component": "SPI_CONN", "pin": "MOSI" }
+      ]
+    },
+    {
+      "net": "SPI_MISO",
+      "connections": [
+        { "component": "MCU1", "pin": "MISO" },
+        { "component": "FLASH1", "pin": "DO" },
+        { "component": "SPI_CONN", "pin": "MISO" }
+      ]
+    },
+    {
+      "net": "SPI_SCK",
+      "connections": [
+        { "component": "MCU1", "pin": "SCK" },
+        { "component": "FLASH1", "pin": "CLK" },
+        { "component": "SPI_CONN", "pin": "SCK" }
+      ]
+    },
+    {
+      "net": "SPI_CS",
+      "connections": [
+        { "component": "MCU1", "pin": "CS" },
+        { "component": "FLASH1", "pin": "CS" },
+        { "component": "SPI_CONN", "pin": "CS" }
+      ]
+    },
+    {
+      "net": "ENABLE",
+      "connections": [
+        { "component": "MCU1", "pin": "EN" },
+        { "component": "REG1", "pin": "EN" },
+        { "component": "R_PULLUP", "pin": "2" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}\\build\\app.js",
+            "outFiles": [
+                "${workspaceFolder}/build/**/*.js"
+            ],
+            "stopOnEntry": false,
+            "args": [
+                "port=3055"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy",
+            ],
+            "sourceMaps": true
+        }
+    ]
+}

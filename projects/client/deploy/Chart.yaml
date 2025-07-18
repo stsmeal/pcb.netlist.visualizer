@@ -1,0 +1,5 @@
+apiVersion: v2
+name: pcb-netlist-visualizer-client
+description: Client React App
+version: 0.1.0
+appVersion: "1.0"

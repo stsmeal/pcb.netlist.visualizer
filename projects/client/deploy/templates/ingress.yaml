@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "pcb-netlist-visualizer-client.fullname" . }}
+spec:
+  ingressClassName: nginx
+  tls:
+      {{- toYaml .Values.ingress.tls | nindent 4 }}
+  rules:
+    {{- range .Values.ingress.hosts }}
+    - host: {{ .host }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            pathType: {{ .pathType }}
+            backend:
+              service:
+                name: pcb-netlist-visualizer-client
+                port:
+                  number: {{ $.Values.service.port }}
+      {{- end }}
+  {{- end }}

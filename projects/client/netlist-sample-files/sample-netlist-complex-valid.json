@@ -1,0 +1,146 @@
+{
+  "components": [
+    {
+      "name": "U1",
+      "type": "Microcontroller",
+      "pins": ["VDD", "VSS", "RESET", "XTAL1", "XTAL2", "SDA", "SCL", "PWM1", "PWM2", "ADC1"]
+    },
+    {
+      "name": "U2",
+      "type": "Sensor_IC",
+      "pins": ["VCC", "GND", "SDA", "SCL", "INT"]
+    },
+    {
+      "name": "X1",
+      "type": "LED",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "C1",
+      "type": "Capacitor",
+      "pins": ["POS", "NEG"]
+    },
+    {
+      "name": "C2",
+      "type": "Capacitor",
+      "pins": ["POS", "NEG"]
+    },
+    {
+      "name": "R1",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "R2",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "R3",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "LED1",
+      "type": "LED",
+      "pins": ["ANODE", "CATHODE"]
+    },
+    {
+      "name": "LED2",
+      "type": "LED",
+      "pins": ["ANODE", "CATHODE"]
+    },
+    {
+      "name": "CONN1",
+      "type": "Connector",
+      "pins": ["VCC", "GND", "DATA", "CLK"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VDD",
+      "connections": [
+        { "component": "U1", "pin": "VDD" },
+        { "component": "U2", "pin": "VCC" },
+        { "component": "C1", "pin": "POS" },
+        { "component": "R1", "pin": "1" },
+        { "component": "R2", "pin": "1" },
+        { "component": "CONN1", "pin": "VCC" }
+      ]
+    },
+    {
+      "net": "GND",
+      "connections": [
+        { "component": "U1", "pin": "VSS" },
+        { "component": "U2", "pin": "GND" },
+        { "component": "C1", "pin": "NEG" },
+        { "component": "C2", "pin": "NEG" },
+        { "component": "LED1", "pin": "CATHODE" },
+        { "component": "LED2", "pin": "CATHODE" },
+        { "component": "CONN1", "pin": "GND" }
+      ]
+    },
+    {
+      "net": "RESET_LINE",
+      "connections": [
+        { "component": "U1", "pin": "RESET" },
+        { "component": "R1", "pin": "2" }
+      ]
+    },
+    {
+      "net": "XTAL_OSC1",
+      "connections": [
+        { "component": "U1", "pin": "XTAL1" },
+        { "component": "X1", "pin": "1" }
+      ]
+    },
+    {
+      "net": "XTAL_OSC2", 
+      "connections": [
+        { "component": "U1", "pin": "XTAL2" },
+        { "component": "X1", "pin": "2" },
+        { "component": "C2", "pin": "POS" }
+      ]
+    },
+    {
+      "net": "I2C_SDA",
+      "connections": [
+        { "component": "U1", "pin": "SDA" },
+        { "component": "U2", "pin": "SDA" },
+        { "component": "R2", "pin": "2" },
+        { "component": "CONN1", "pin": "DATA" }
+      ]
+    },
+    {
+      "net": "I2C_SCL",
+      "connections": [
+        { "component": "U1", "pin": "SCL" },
+        { "component": "U2", "pin": "SCL" },
+        { "component": "CONN1", "pin": "CLK" }
+      ]
+    },
+    {
+      "net": "LED1_CONTROL",
+      "connections": [
+        { "component": "U1", "pin": "PWM1" },
+        { "component": "R3", "pin": "1" },
+        { "component": "LED1", "pin": "ANODE" }
+      ]
+    },
+    {
+      "net": "LED2_CONTROL", 
+      "connections": [
+        { "component": "U1", "pin": "PWM2" },
+        { "component": "LED2", "pin": "ANODE" }
+      ]
+    },
+    {
+      "net": "SENSOR_INT",
+      "connections": [
+        { "component": "U2", "pin": "INT" },
+        { "component": "U1", "pin": "ADC1" },
+        { "component": "R3", "pin": "2" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "components": [
+    {
+      "name": "DUPLICATE_NAME",
+      "type": "IC",
+      "pins": ["VCC", "GND", "OUT"]
+    },
+    {
+      "name": "DUPLICATE_NAME",
+      "type": "Resistor",
+      "pins": ["1", "2"]
+    },
+    {
+      "name": "C1",
+      "type": "Capacitor",
+      "pins": ["POS", "NEG"]
+    }
+  ],
+  "nets": [
+    {
+      "net": "VCC",
+      "connections": [
+        { "component": "DUPLICATE_NAME", "pin": "VCC" },
+        { "component": "C1", "pin": "POS" }
+      ]
+    }
+  ]
+}
