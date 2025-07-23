@@ -16,6 +16,7 @@ up: build
 	@echo "Deploying API..."
 	helm uninstall $(RELEASE_NAME) || echo "Release not found."
 	minikube image rm $(IMAGE_NAME):$(TAG) || echo "Image not found in minikube."
+	@echo "This might take a while, please be patient..."
 	minikube image load $(IMAGE_NAME):$(TAG)
 	helm install $(RELEASE_NAME) $(HELM_CHART) --set image.tag=$(TAG)
 	@echo "API deployed successfully."

@@ -8,10 +8,13 @@ This project enables engineers and designers to upload JSON netlist files, valid
 - **Administrator privileges** (required for system configuration)
 - **Internet connection** (for downloading dependencies)
 
-### One-Command Setup
+### Setup
+Add '127.0.0.1 api.dev.local dev.local' to /etc/hosts file.
 ```bash
 ./setup.sh
+minikube tunnel
 ```
+Then visit api.dev.local and dev.local to trust self signed certs.
 
 This automated setup will:
 1. Install all required dependencies (Docker, Kubernetes, Node.js, etc.)
@@ -19,7 +22,6 @@ This automated setup will:
 3. Generate SSL certificates for HTTPS development
 4. Update `/etc/hosts` for local domain resolution
 5. Deploy and start all services
-6. Open the application at `https://dev.local`
 
 ### Manual Setup
 ```bash
