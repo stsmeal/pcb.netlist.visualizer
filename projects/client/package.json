@@ -1,16 +1,16 @@
 {
-  "name": "PCB Netlist Visualizer Client",
+  "name": "pcb-netlist-visualizer-client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "dev:local": "vite --mode development",
+    "dev": "vite --port 5174",
+    "dev:local": "vite --mode development --port 5174",
     "build": "tsc -b && vite build",
     "lint": "prettier --check . && tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "preview": "vite preview",
+    "preview": "vite preview --port 5174",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage"
