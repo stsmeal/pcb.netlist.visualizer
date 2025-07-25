@@ -1,0 +1,98 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug API (Development)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/src/app.js",
+      "preLaunchTask": "tsc: build",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
+      "restart": true,
+      "runtimeArgs": ["--nolazy"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug API (Production)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/src/app.js",
+      "preLaunchTask": "tsc: build",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "env": {
+        "NODE_ENV": "production"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
+      "restart": true,
+      "runtimeArgs": ["--nolazy"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug API with Watch",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/dist/src/app.js",
+      "preLaunchTask": "tsc: watch",
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true,
+      "restart": true,
+      "runtimeArgs": ["--nolazy"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Attach to Running Process",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": null,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug Tests",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "sourceMaps": true,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Debug Single Test File",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "sourceMaps": true,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ]
+}

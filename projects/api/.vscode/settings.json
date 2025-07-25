@@ -1,0 +1,30 @@
+{
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true,
+    "**/.git": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true
+  },
+  "jest.autoRun": {
+    "watch": false,
+    "onSave": "test-src-file"
+  },
+  "jest.showCoverageOnLoad": false,
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "emmet.includeLanguages": {
+    "typescript": "typescript"
+  }
+}
